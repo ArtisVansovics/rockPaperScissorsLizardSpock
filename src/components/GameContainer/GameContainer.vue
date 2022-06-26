@@ -26,12 +26,36 @@
       <h3>{{ winMessage }}</h3>
     </div>
     <!-- Main row -->
-    <div class="container__row">
-      <RoundButton
-        v-for="{ id, imgUrl, imgName } in buttonImages"
-        :key="id"
-        :img-url="imgUrl"
-        :img-name="imgName" />
+    <div class="container__grid">
+      <!-- P1 button column -->
+      <div class="container__column">
+        <div class="button-grid">
+          <RoundButton
+            v-for="{ id, imgUrl, imgName } in buttonImages"
+            :key="id"
+            class="button-grid__item"
+            :img-url="imgUrl"
+            :img-name="imgName" />
+        </div>
+      </div>
+      <!-- P1 selection column -->
+      <div class="container__column"></div>
+      <!-- Winner column -->
+      <div class="container__column"></div>
+      <!-- P2 selection column -->
+      <div class="container__column"></div>
+      <!-- P2 button column -->
+      <div class="container__column">
+        <div class="button-grid">
+          <RoundButton
+            v-for="{ id, imgUrl, imgName } in buttonImages"
+            :key="id"
+            class="button-grid__item"
+            :img-url="imgUrl"
+            :img-name="imgName"
+            is-disabled />
+        </div>
+      </div>
     </div>
     <!-- Match description row -->
     <div class="container__row">

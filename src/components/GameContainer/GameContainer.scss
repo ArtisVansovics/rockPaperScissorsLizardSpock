@@ -25,6 +25,31 @@
   gap: 10px;
 }
 
+.container__grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 2fr 1fr 2fr;
+}
+
+.container__column {
+  display: flex;
+  flex-flow: column;
+}
+
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0 15px;
+  justify-content: center;
+}
+
+.button-grid__item {
+  grid-column: span 2;
+}
+
+.button-grid__item:nth-child(3) {
+  grid-column: 2 / span 2;
+}
+
 .container__score {
   font-size: 28px;
   line-height: 1;
@@ -32,6 +57,4 @@
 
 .img {
   border-radius: 50%;
-  border: #F2AC57 4px solid;
-  width: 50%;
 }
