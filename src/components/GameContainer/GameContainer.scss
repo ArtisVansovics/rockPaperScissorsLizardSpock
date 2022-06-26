@@ -33,6 +33,7 @@
 .container__column {
   display: flex;
   flex-flow: column;
+  justify-content: center;
 }
 
 .button-grid {

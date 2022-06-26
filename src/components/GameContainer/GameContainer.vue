@@ -33,17 +33,30 @@
           <RoundButton
             v-for="{ id, imgUrl, imgName } in buttonImages"
             :key="id"
-            class="button-grid__item"
+            :img-name="imgName"
             :img-url="imgUrl"
-            :img-name="imgName" />
+            class="button-grid__item"
+            @on-click="selectHandlerPlayerOne(imgName)" />
         </div>
       </div>
       <!-- P1 selection column -->
-      <div class="container__column"></div>
+      <div class="container__column">
+        <img
+          v-if="playerOneSelection"
+          :src="playerOneImageUrl"
+          :alt="playerOneSelection"
+          class="img" />
+      </div>
       <!-- Winner column -->
       <div class="container__column"></div>
       <!-- P2 selection column -->
-      <div class="container__column"></div>
+      <div class="container__column">
+        <img
+          v-if="playerTwoSelection"
+          :src="playerTwoImageUrl"
+          :alt="playerTwoSelection"
+          class="img" />
+      </div>
       <!-- P2 button column -->
       <div class="container__column">
         <div class="button-grid">
@@ -72,7 +85,10 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+
 import type ButtonImage from '@/models/ButtonImageModel';
+import type PlayerOption from '@/models/PlayerOptionModel';
+
 import buttonImages from '@/data/buttonImages';
 import PrimaryButton from '@/components/PrimaryButton/PrimaryButton.vue';
 import RoundButton from '@/components/RoundButton/RoundButton.vue';
@@ -84,6 +100,8 @@ export default defineComponent({
     playerOneScore: 0,
     playerTwoScore: 0,
     tieScore: 0,
+    playerOneSelection: '' as PlayerOption,
+    playerTwoSelection: '' as PlayerOption,
     winMessage: '',
     matchDescription: '',
     buttonImages: buttonImages as ButtonImage[],
@@ -92,8 +110,21 @@ export default defineComponent({
     isResetDisabled(): boolean {
       return !this.playerOneScore && !this.playerTwoScore && !this.tieScore;
     },
+    playerOneImageUrl(): string | undefined {
+      return buttonImages.find(
+        (button) => button.imgName === this.playerOneSelection
+      )?.imgUrl;
+    },
+    playerTwoImageUrl(): string | undefined {
+      return buttonImages.find(
+        (button) => button.imgName === this.playerTwoSelection
+      )?.imgUrl;
+    },
   },
   methods: {
+    selectHandlerPlayerOne(selection: PlayerOption): void {
+      this.playerOneSelection = selection;
+    },
     resetState(): void {
       this.playerOneScore = 0;
       this.playerTwoScore = 0;
