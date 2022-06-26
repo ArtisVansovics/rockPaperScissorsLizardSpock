@@ -1,0 +1,17 @@
+#app {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  color: #F2F0D5;
+  background-color: #254159;
+  min-height: 100vh;
+  padding: 30px;
+}
+
+.container {
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  justify-items: center;
+}
