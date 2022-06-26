@@ -8,10 +8,8 @@
   padding: 30px;
 }
 
-.container {
-  margin: auto;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
-  justify-items: center;
+.box {
+  width: 200px;
+  height: 200px;
+  background-color: red;
 }

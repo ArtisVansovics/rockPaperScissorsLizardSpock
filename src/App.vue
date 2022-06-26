@@ -1,9 +1,15 @@
 <template>
   <div id="app">
-    <div class="container">
-      <h1>Test</h1>
-    </div>
+    <GameContainer />
   </div>
 </template>
+
+<script lang="ts">
+import GameContainer from '@/components/GameContainer/GameContainer.vue';
+
+export default {
+  components: { GameContainer },
+};
+</script>
 
 <style scoped lang="scss" src="./styles/App.scss" />
