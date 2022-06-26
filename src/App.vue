@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <h1 class="app__title">ROCK, PAPER, SCISSORS, LIZARD, SPOCK</h1>
     <GameContainer />
   </div>
 </template>
