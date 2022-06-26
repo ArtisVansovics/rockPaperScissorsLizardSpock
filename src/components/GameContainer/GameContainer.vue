@@ -1,29 +1,43 @@
 <template>
   <div class="container">
+    <!-- Score row -->
     <div class="container__row">
       <div class="container__box">
-        <h2>P1 (user)</h2>
-        <h2>{{ playerOneScore }}</h2>
+        <h2 class="container__score">P1 (user)</h2>
+        <h2 class="container__score">
+          {{ playerOneScore }}
+        </h2>
       </div>
       <div class="container__box">
-        <h2>Tie</h2>
-        <h2>{{ tieScore }}</h2>
+        <h2 class="container__score">Tie</h2>
+        <h2 class="container__score">
+          {{ tieScore }}
+        </h2>
       </div>
       <div class="container__box">
-        <h2>P2 (CPU)</h2>
-        <h2>{{ playerTwoScore }}</h2>
+        <h2 class="container__score">P2 (CPU)</h2>
+        <h2 class="container__score">
+          {{ playerTwoScore }}
+        </h2>
       </div>
     </div>
+    <!-- Win message row -->
     <div class="container__row">
       <h3>{{ winMessage }}</h3>
     </div>
-    <div class="container__row">placeholder</div>
+    <!-- Main row -->
+    <div class="container__row">
+      <RoundButton
+        v-for="{ id, imgUrl, imgName } in buttonImages"
+        :key="id"
+        :img-url="imgUrl"
+        :img-name="imgName" />
+    </div>
+    <!-- Match description row -->
     <div class="container__row">
       <h3>{{ matchDescription }}</h3>
     </div>
-    <div class="container__row">
-      <h3>{{ matchDescription }}</h3>
-    </div>
+    <!-- Footer row -->
     <div class="container__row">
       <PrimaryButton :is-disabled="isResetDisabled" @on-click="resetState">
         RESET
@@ -34,17 +48,21 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import type ButtonImage from '@/models/ButtonImageModel';
+import buttonImages from '@/data/buttonImages';
 import PrimaryButton from '@/components/PrimaryButton/PrimaryButton.vue';
+import RoundButton from '@/components/RoundButton/RoundButton.vue';
 
 export default defineComponent({
   name: 'GameContainer',
-  components: { PrimaryButton },
+  components: { RoundButton, PrimaryButton },
   data: () => ({
     playerOneScore: 0,
     playerTwoScore: 0,
     tieScore: 0,
     winMessage: '',
     matchDescription: '',
+    buttonImages: buttonImages as ButtonImage[],
   }),
   computed: {
     isResetDisabled(): boolean {
