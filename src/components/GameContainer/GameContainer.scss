@@ -10,6 +10,19 @@
   background-color: #8F9FA6;
 }
 
+.container__row {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  gap: 30px;
+  width: 100%;
+}
+
+.container__box {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
 
 .img {
   border-radius: 50%;
