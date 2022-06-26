@@ -10,7 +10,10 @@ import { defineComponent } from 'vue';
 export default defineComponent({
   name: 'PrimaryButton',
   props: {
-    isDisabled: Boolean,
+    isDisabled: {
+      type: Boolean,
+      default: false,
+    },
   },
   emits: ['on-click'],
   methods: {
