@@ -124,6 +124,11 @@ export default defineComponent({
   methods: {
     selectHandlerPlayerOne(selection: PlayerOption): void {
       this.playerOneSelection = selection;
+      this.playerTwoSelection = this.cpuSelectionRandomizer();
+    },
+    cpuSelectionRandomizer(): PlayerOption {
+      return buttonImages[Math.floor(Math.random() * buttonImages.length)]
+        .imgName;
     },
     resetState(): void {
       this.playerOneScore = 0;
