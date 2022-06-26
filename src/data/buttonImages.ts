@@ -4,27 +4,27 @@ const buttonImages: ButtonImage[] = [
   {
     id: 1,
     imgUrl: 'src/assets/images/rock.png',
-    imgName: 'Rock',
+    imgName: 'rock',
   },
   {
     id: 2,
     imgUrl: 'src/assets/images/paper.png',
-    imgName: 'Paper',
+    imgName: 'paper',
   },
   {
     id: 3,
     imgUrl: 'src/assets/images/scissors.png',
-    imgName: 'Scissors',
+    imgName: 'scissors',
   },
   {
     id: 4,
     imgUrl: 'src/assets/images/lizard.png',
-    imgName: 'Lizard',
+    imgName: 'lizard',
   },
   {
     id: 5,
     imgUrl: 'src/assets/images/spock.png',
-    imgName: 'Spock',
+    imgName: 'spock',
   },
 ];
 
