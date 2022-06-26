@@ -12,7 +12,11 @@
   }
 
   &:disabled {
-    cursor: none;
+    cursor: default;
+
+    &:hover {
+      outline: none;
+    }
   }
 }
 
