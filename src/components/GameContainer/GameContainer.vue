@@ -48,7 +48,7 @@
           :src="playerOneImageUrl"
           :alt="playerOneSelection"
           :class="[
-            'img',
+            'container__img',
             { animate: animate },
             { loser: winner === 'playerTwo' },
           ]" />
@@ -60,7 +60,7 @@
           :src="playerTwoImageUrl"
           :alt="playerTwoSelection"
           :class="[
-            'img',
+            'container__img',
             { animate: animate },
             { loser: winner === 'playerOne' },
           ]" />

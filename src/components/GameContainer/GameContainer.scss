@@ -71,6 +71,11 @@
   letter-spacing: 2px;
 }
 
+.container__img {
+  border-radius: 50%;
+  box-shadow: #1A2026 0 0 8px 3px;
+}
+
 .button-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -84,11 +89,6 @@
 
 .button-grid__item:nth-child(3) {
   grid-column: 2 / span 2;
-}
-
-.img {
-  border-radius: 50%;
-  box-shadow: #1A2026 0 0 8px 3px;
 }
 
 .loser {
