@@ -23,7 +23,7 @@
     </div>
     <!-- Win message row -->
     <div class="container__row">
-      <h3>{{ winMessage }}</h3>
+      <h2 class="container__win">{{ winMessage }}</h2>
     </div>
     <!-- Main row -->
     <div class="container__grid">
@@ -47,8 +47,6 @@
           :alt="playerOneSelection"
           class="img" />
       </div>
-      <!-- Winner column -->
-      <div class="container__column"></div>
       <!-- P2 selection column -->
       <div class="container__column">
         <img
@@ -102,7 +100,7 @@ export default defineComponent({
     tieScore: 0,
     playerOneSelection: '' as PlayerOption,
     playerTwoSelection: '' as PlayerOption,
-    winMessage: '',
+    winner: '',
     matchDescription: '',
     buttonImages: buttonImages as ButtonImage[],
   }),
@@ -120,23 +118,125 @@ export default defineComponent({
         (button) => button.imgName === this.playerTwoSelection
       )?.imgUrl;
     },
+    winMessage(): string {
+      if (this.winner === 'none') {
+        return "It's a tie!";
+      } else if (this.winner === 'playerOne') {
+        return 'Player one scores!';
+      } else if (this.winner === 'playerTwo') {
+        return 'Player two scores!';
+      } else return '';
+    },
   },
   methods: {
     selectHandlerPlayerOne(selection: PlayerOption): void {
       this.playerOneSelection = selection;
       this.playerTwoSelection = this.cpuSelectionRandomizer();
+
+      this.determineWinningPlayer();
     },
     cpuSelectionRandomizer(): PlayerOption {
-      return buttonImages[Math.floor(Math.random() * buttonImages.length)]
-        .imgName;
+      return buttonImages[~~(Math.random() * buttonImages.length)].imgName;
+    },
+    determineWinningPlayer(): void {
+      if (this.playerOneSelection === this.playerTwoSelection) {
+        this.tieScore += 1;
+
+        this.winner = 'none';
+      } else if (this.playerOneSelection === 'scissors') {
+        if (
+          this.playerTwoSelection === 'paper' ||
+          this.playerTwoSelection === 'lizard'
+        ) {
+          this.playerOneScore += 1;
+
+          this.winner = 'playerOne';
+        } else if (
+          this.playerTwoSelection === 'rock' ||
+          this.playerTwoSelection === 'spock'
+        ) {
+          this.playerTwoScore += 1;
+
+          this.winner = 'playerTwo';
+        }
+      } else if (this.playerOneSelection === 'paper') {
+        if (
+          this.playerTwoSelection === 'rock' ||
+          this.playerTwoSelection === 'spock'
+        ) {
+          this.playerOneScore += 1;
+
+          this.winner = 'playerOne';
+        } else if (
+          this.playerTwoSelection === 'lizard' ||
+          this.playerTwoSelection === 'scissors'
+        ) {
+          this.playerTwoScore += 1;
+
+          this.winner = 'playerTwo';
+        }
+      } else if (this.playerOneSelection === 'rock') {
+        if (
+          this.playerTwoSelection === 'lizard' ||
+          this.playerTwoSelection === 'scissors'
+        ) {
+          this.playerOneScore += 1;
+
+          this.winner = 'playerOne';
+        } else if (
+          this.playerTwoSelection === 'spock' ||
+          this.playerTwoSelection === 'paper'
+        ) {
+          this.playerTwoScore += 1;
+
+          this.winner = 'playerTwo';
+        }
+      } else if (this.playerOneSelection === 'lizard') {
+        if (
+          this.playerTwoSelection === 'spock' ||
+          this.playerTwoSelection === 'paper'
+        ) {
+          this.playerOneScore += 1;
+
+          this.winner = 'playerOne';
+        } else if (
+          this.playerTwoSelection === 'scissors' ||
+          this.playerTwoSelection === 'rock'
+        ) {
+          this.playerTwoScore += 1;
+
+          this.winner = 'playerTwo';
+        }
+      } else if (this.playerOneSelection === 'spock') {
+        if (
+          this.playerTwoSelection === 'scissors' ||
+          this.playerTwoSelection === 'rock'
+        ) {
+          this.playerOneScore += 1;
+
+          this.winner = 'playerOne';
+        } else if (
+          this.playerTwoSelection === 'paper' ||
+          this.playerTwoSelection === 'lizard'
+        ) {
+          this.playerTwoScore += 1;
+
+          this.winner = 'playerTwo';
+        }
+      }
     },
     resetState(): void {
       this.playerOneScore = 0;
       this.playerTwoScore = 0;
       this.tieScore = 0;
-      this.winMessage = '';
+      this.playerOneSelection = '';
+      this.playerTwoSelection = '';
+      this.winner = '';
       this.matchDescription = '';
     },
+    // resetState(): void {
+    //   Object.assign(this.$data, this.$options.data?.call(this));
+    // },
   },
 });
 </script>
