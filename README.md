@@ -1,16 +1,20 @@
-# Vue 3 + TypeScript + Vite
+# ROCK, PAPER, SCISSORS, LIZARD, SPOCK
+**An app for playing the classic game of Rock, Paper, Scissors, Lizard, Spock**
+## The Rules
+Each player chooses from one of the five options: Rock, Paper, Scissors, Lizard, Spock.
+Based on what each of them selected, one of them wins, or a tie is declared, if all players chose the same option.
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
-
-## Recommended IDE Setup
-
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
-
-## Type Support For `.vue` Imports in TS
-
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's Take Over mode by following these steps:
-
-1. Run `Extensions: Show Built-in Extensions` from VS Code's command palette, look for `TypeScript and JavaScript Language Features`, then right click and select `Disable (Workspace)`. By default, Take Over mode will enable itself if the default TypeScript extension is disabled.
-2. Reload the VS Code window by running `Developer: Reload Window` from the command palette.
-
-You can learn more about Take Over mode [here](https://github.com/johnsoncodehk/volar/discussions/471).
+Scissors cut Paper, Paper covers Rock, Rock crushes Lizard, Lizard poisons
+Spock, Spock smashes Scissors, Scissors decapitate Lizard, Lizard eats Paper,
+Paper disproves Spock, Spock vaporizes Rock, (and as it always has) Rock crushes
+Scissors.
+## How it works
+1) Player One (the user) selects one of the five options displayed as round buttons with images on the left side.
+2) A random selection is made for Player Two (the CPU).
+3) Based on the rules listed above, one of the players wins the round and gains one point.
+   1) The winning players score counter increases by one. 
+   2) If tie is declared, tie counter increases instead.
+   3) Image of the losing player's selection is displayed in grayscale.
+4) Above the selection the result of the match is displayed as a sentence.
+5) Below the selection short description of what happened based on the selection appears.
+6) If a round has been played, user is able to reset the score by pressing the 'Reset' button.

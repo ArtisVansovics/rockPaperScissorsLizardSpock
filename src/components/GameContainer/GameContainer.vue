@@ -310,9 +310,6 @@ export default defineComponent({
       this.playerTwoSelection = '';
       this.winner = '';
     },
-    // resetState(): void {
-    //   Object.assign(this.$data, this.$options.data?.call(this));
-    // },
   },
 });
 </script>
