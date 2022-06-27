@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <!-- Score row -->
+    <!-- Header row -->
     <div class="container__row">
       <div class="container__box">
         <h2 class="container__score">P1 (user)</h2>
@@ -23,7 +23,9 @@
     </div>
     <!-- Win message row -->
     <div class="container__row">
-      <h2 class="container__win">{{ winMessage }}</h2>
+      <h2 v-if="winner" class="container__win">
+        {{ winMessage }}
+      </h2>
     </div>
     <!-- Main row -->
     <div class="container__grid">
@@ -70,7 +72,9 @@
     </div>
     <!-- Match description row -->
     <div class="container__row">
-      <h3 v-if="winner">{{ matchDescription }}</h3>
+      <h3 v-if="winner" class="container__description">
+        {{ matchDescription }}
+      </h3>
     </div>
     <!-- Footer row -->
     <div class="container__row">

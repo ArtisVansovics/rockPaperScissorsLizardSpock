@@ -2,14 +2,16 @@
   display: flex;
   flex-flow: column;
   align-items: center;
-  color: #F2F0D5;
-  background-color: #254159;
+  text-align: center;
   min-height: 100vh;
   padding: 30px;
+  background-color: #254159;
+  color: #F2F0D5;
 }
 
 .app__title {
   font-size: 35px;
+  letter-spacing: 5px;
   margin-top: 40px;
 }
 

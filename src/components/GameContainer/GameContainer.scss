@@ -29,6 +29,10 @@
   display: grid;
   grid-template-columns: 2fr 200px 200px 2fr;
   gap: 40px;
+
+  @media screen and (max-width: 1024px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .container__column {
@@ -54,6 +58,7 @@
 
 .container__score {
   font-size: 28px;
+  letter-spacing: 2px;
   line-height: 1;
 }
 
@@ -61,6 +66,12 @@
   font-size: 30px;
   text-transform: uppercase;
   letter-spacing: 4px;
+}
+
+.container__description {
+  font-size: 25px;
+  font-weight: 500;
+  letter-spacing: 2px;
 }
 
 .img {
