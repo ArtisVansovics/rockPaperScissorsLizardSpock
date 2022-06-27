@@ -70,7 +70,7 @@
     </div>
     <!-- Match description row -->
     <div class="container__row">
-      <h3>{{ matchDescription }}</h3>
+      <h3 v-if="winner">{{ matchDescription }}</h3>
     </div>
     <!-- Footer row -->
     <div class="container__row">
@@ -101,7 +101,6 @@ export default defineComponent({
     playerOneSelection: '' as PlayerOption,
     playerTwoSelection: '' as PlayerOption,
     winner: '',
-    matchDescription: '',
     buttonImages: buttonImages as ButtonImage[],
   }),
   computed: {
@@ -126,6 +125,62 @@ export default defineComponent({
       } else if (this.winner === 'playerTwo') {
         return 'Player two scores!';
       } else return '';
+    },
+    matchDescription(): string {
+      if (this.playerOneSelection === this.playerTwoSelection) {
+        return 'Nothing happens...';
+      } else if (
+        [this.playerOneSelection, this.playerTwoSelection].includes('scissors')
+      ) {
+        if (
+          [this.playerOneSelection, this.playerTwoSelection].includes('paper')
+        )
+          return 'Scissors cut Paper';
+        else if (
+          [this.playerOneSelection, this.playerTwoSelection].includes('spock')
+        )
+          return 'Spock smashes Scissors';
+        else if (
+          [this.playerOneSelection, this.playerTwoSelection].includes('lizard')
+        )
+          return 'Scissors decapitate Lizard';
+        else if (
+          [this.playerOneSelection, this.playerTwoSelection].includes('rock')
+        )
+          return 'Rock crushes Scissors';
+      } else if (
+        [this.playerOneSelection, this.playerTwoSelection].includes('paper')
+      ) {
+        if ([this.playerOneSelection, this.playerTwoSelection].includes('rock'))
+          return 'Paper covers Rock';
+        else if (
+          [this.playerOneSelection, this.playerTwoSelection].includes('lizard')
+        )
+          return 'Lizard eats Paper';
+        else if (
+          [this.playerOneSelection, this.playerTwoSelection].includes('spock')
+        )
+          return 'Paper disproves Spock';
+      } else if (
+        [this.playerOneSelection, this.playerTwoSelection].includes('rock')
+      ) {
+        if (
+          [this.playerOneSelection, this.playerTwoSelection].includes('lizard')
+        )
+          return 'Rock crushes Lizard';
+        else if (
+          [this.playerOneSelection, this.playerTwoSelection].includes('spock')
+        )
+          return 'Spock vaporizes Rock';
+      } else if (
+        [this.playerOneSelection, this.playerTwoSelection].includes('lizard')
+      ) {
+        if (
+          [this.playerOneSelection, this.playerTwoSelection].includes('spock')
+        )
+          return 'Lizard poisons Spock';
+      }
+      return '';
     },
   },
   methods: {
@@ -232,7 +287,6 @@ export default defineComponent({
       this.playerOneSelection = '';
       this.playerTwoSelection = '';
       this.winner = '';
-      this.matchDescription = '';
     },
     // resetState(): void {
     //   Object.assign(this.$data, this.$options.data?.call(this));
