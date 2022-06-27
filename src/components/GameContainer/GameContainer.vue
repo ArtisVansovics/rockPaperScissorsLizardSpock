@@ -23,7 +23,7 @@
     </div>
     <!-- Win message row -->
     <div class="container__row">
-      <h2 v-if="winner" class="container__win">
+      <h2 :class="['container__win', { animate: animateImage }]">
         {{ winMessage }}
       </h2>
     </div>
@@ -47,7 +47,11 @@
           v-if="playerOneSelection"
           :src="playerOneImageUrl"
           :alt="playerOneSelection"
-          :class="['img', { loser: winner === 'playerTwo' }]" />
+          :class="[
+            'img',
+            { animate: animateImage },
+            { loser: winner === 'playerTwo' },
+          ]" />
       </div>
       <!-- P2 selection column -->
       <div class="container__column">
@@ -55,7 +59,11 @@
           v-if="playerTwoSelection"
           :src="playerTwoImageUrl"
           :alt="playerTwoSelection"
-          :class="['img', { loser: winner === 'playerOne' }]" />
+          :class="[
+            'img',
+            { animate: animateImage },
+            { loser: winner === 'playerOne' },
+          ]" />
       </div>
       <!-- P2 button column -->
       <div class="container__column">
@@ -72,7 +80,9 @@
     </div>
     <!-- Match description row -->
     <div class="container__row">
-      <h3 v-if="winner" class="container__description">
+      <h3
+        v-if="winner"
+        :class="['container__description', { animate: animateImage }]">
         {{ matchDescription }}
       </h3>
     </div>
@@ -105,6 +115,7 @@ export default defineComponent({
     playerOneSelection: '' as PlayerOption,
     playerTwoSelection: '' as PlayerOption,
     winner: '',
+    animateImage: false,
     buttonImages: buttonImages as ButtonImage[],
   }),
   computed: {
@@ -122,7 +133,9 @@ export default defineComponent({
       )?.imgUrl;
     },
     winMessage(): string {
-      if (this.winner === 'none') {
+      if (!this.winner) {
+        return 'Player One, make your selection';
+      } else if (this.winner === 'none') {
         return "It's a tie!";
       } else if (this.winner === 'playerOne') {
         return 'Player one scores!';
@@ -189,8 +202,13 @@ export default defineComponent({
   },
   methods: {
     selectHandlerPlayerOne(selection: PlayerOption): void {
+      this.animateImage = true;
       this.playerOneSelection = selection;
       this.playerTwoSelection = this.cpuSelectionRandomizer();
+
+      setTimeout(() => {
+        this.animateImage = false;
+      }, 1500);
 
       this.determineWinningPlayer();
     },
