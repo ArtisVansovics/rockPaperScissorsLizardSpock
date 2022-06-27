@@ -7,7 +7,8 @@
   padding: 40px 50px;
   margin: auto;
   border-radius: 30px 10px;
-  background-color: #8F9FA6;
+  box-shadow: #1A2026 0 0 10px 5px;
+  background-color: #730E45;
 }
 
 .container__row {
@@ -60,22 +61,26 @@
   font-size: 28px;
   letter-spacing: 2px;
   line-height: 1;
+  color: #F2AC57;
 }
 
 .container__win {
   font-size: 30px;
   text-transform: uppercase;
   letter-spacing: 4px;
+  color: #488C18;
 }
 
 .container__description {
   font-size: 25px;
   font-weight: 500;
   letter-spacing: 2px;
+  color: #488C18;
 }
 
 .img {
   border-radius: 50%;
+  box-shadow: #1A2026 0 0 8px 3px;
 }
 
 .loser {
