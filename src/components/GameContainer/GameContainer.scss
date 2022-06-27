@@ -9,6 +9,7 @@
   border-radius: 30px 10px;
   box-shadow: #1A2026 0 0 10px 5px;
   background-color: #730E45;
+  color: #488C18;
 }
 
 .container__row {
@@ -46,21 +47,28 @@
   font-size: 28px;
   letter-spacing: 2px;
   line-height: 1;
+  color: #F2F0D5;
+
+}
+
+.container__score--one {
   color: #F2AC57;
+}
+
+.container__score--two {
+  color: #D9A282;
 }
 
 .container__win {
   font-size: 30px;
   text-transform: uppercase;
   letter-spacing: 4px;
-  color: #488C18;
 }
 
 .container__description {
   font-size: 25px;
   font-weight: 500;
   letter-spacing: 2px;
-  color: #488C18;
 }
 
 .button-grid {

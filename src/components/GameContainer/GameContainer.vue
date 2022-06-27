@@ -3,8 +3,8 @@
     <!-- Header row -->
     <div class="container__row">
       <div class="container__box">
-        <h2 class="container__score">P1 (user)</h2>
-        <h2 class="container__score">
+        <h2 class="container__score container__score--one">P1 (user)</h2>
+        <h2 class="container__score container__score--one">
           {{ playerOneScore }}
         </h2>
       </div>
@@ -15,15 +15,15 @@
         </h2>
       </div>
       <div class="container__box">
-        <h2 class="container__score">P2 (CPU)</h2>
-        <h2 class="container__score">
+        <h2 class="container__score container__score--two">P2 (CPU)</h2>
+        <h2 class="container__score container__score--two">
           {{ playerTwoScore }}
         </h2>
       </div>
     </div>
     <!-- Win message row -->
     <div class="container__row">
-      <h2 :class="['container__win', { animate: animateImage }]">
+      <h2 :class="['container__win', { animate: animate }]">
         {{ winMessage }}
       </h2>
     </div>
@@ -49,7 +49,7 @@
           :alt="playerOneSelection"
           :class="[
             'img',
-            { animate: animateImage },
+            { animate: animate },
             { loser: winner === 'playerTwo' },
           ]" />
       </div>
@@ -61,7 +61,7 @@
           :alt="playerTwoSelection"
           :class="[
             'img',
-            { animate: animateImage },
+            { animate: animate },
             { loser: winner === 'playerOne' },
           ]" />
       </div>
@@ -82,7 +82,7 @@
     <div class="container__row">
       <h3
         v-if="winner"
-        :class="['container__description', { animate: animateImage }]">
+        :class="['container__description', { animate: animate }]">
         {{ matchDescription }}
       </h3>
     </div>
@@ -115,7 +115,7 @@ export default defineComponent({
     playerOneSelection: '' as PlayerOption,
     playerTwoSelection: '' as PlayerOption,
     winner: '',
-    animateImage: false,
+    animate: false,
     buttonImages: buttonImages as ButtonImage[],
   }),
   computed: {
@@ -202,12 +202,12 @@ export default defineComponent({
   },
   methods: {
     selectHandlerPlayerOne(selection: PlayerOption): void {
-      this.animateImage = true;
+      this.animate = true;
       this.playerOneSelection = selection;
       this.playerTwoSelection = this.cpuSelectionRandomizer();
 
       setTimeout(() => {
-        this.animateImage = false;
+        this.animate = false;
       }, 1500);
 
       this.determineWinningPlayer();
