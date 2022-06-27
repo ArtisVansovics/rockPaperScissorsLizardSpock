@@ -45,7 +45,7 @@
           v-if="playerOneSelection"
           :src="playerOneImageUrl"
           :alt="playerOneSelection"
-          class="img" />
+          :class="['img', { loser: winner === 'playerTwo' }]" />
       </div>
       <!-- P2 selection column -->
       <div class="container__column">
@@ -53,7 +53,7 @@
           v-if="playerTwoSelection"
           :src="playerTwoImageUrl"
           :alt="playerTwoSelection"
-          class="img" />
+          :class="['img', { loser: winner === 'playerOne' }]" />
       </div>
       <!-- P2 button column -->
       <div class="container__column">

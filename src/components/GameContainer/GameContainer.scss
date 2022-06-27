@@ -27,7 +27,7 @@
 
 .container__grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 2fr;
+  grid-template-columns: 2fr 200px 200px 2fr;
   gap: 40px;
 }
 
@@ -67,3 +67,6 @@
   border-radius: 50%;
 }
 
+.loser {
+  filter: grayscale(100%);
+}
